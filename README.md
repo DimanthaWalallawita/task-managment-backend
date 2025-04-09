@@ -49,10 +49,10 @@ Ensure you have the following installed on your system:
 3. Create .env file in your main directory
 
 4. Inside .env file add these files:<br/>
-        👉PORT = 8000
-        👉MONGO_URL = "mongodb://localhost:27017/managment"
-        👉JWT_SECRET = "jwt secret code"
-        👉EMAIL_USER = "user email address"
+        👉PORT = 8000<br/>
+        👉MONGO_URL = "mongodb://localhost:27017/managment"<br/>
+        👉JWT_SECRET = "jwt secret code"<br/>
+        👉EMAIL_USER = "user email address"<br/>
         👉EMAIL_PASS = "App password in google account" | Youtube(https://www.youtube.com/watch?v=weA4yBSUMXs&ab_channel=FundaOfWebIT)
 
 
