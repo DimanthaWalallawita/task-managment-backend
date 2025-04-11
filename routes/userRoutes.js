@@ -1,5 +1,5 @@
 const express = require('express');
-const { getUsers, updateUser, deleteUser, toggleUserStatus, getAdmins, deleteAdmin, updateAdmin, userDetails, userProfileUpdate, adminDetails } = require('../controllers/userController');
+const { getUsers, updateUser, deleteUser, toggleUserStatus, getAdmins, deleteAdmin, updateAdmin, userDetails, userProfileUpdate, adminDetails, countUsers } = require('../controllers/userController');
 const authMiddleware = require('../middleware/authMiddleware')
 
 const router = express.Router();
@@ -14,5 +14,6 @@ router.patch('/admin/update/:adminId', updateAdmin);
 router.get('/user', authMiddleware, userDetails);
 router.patch('/user/profile', authMiddleware, userProfileUpdate);
 router.get('/admin/data', authMiddleware, adminDetails);
+router.get('/userCount', countUsers);
 
 module.exports = router;

@@ -173,3 +173,12 @@ exports.userProfileUpdate = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+
+exports.countUsers = async (req, res) => {
+    try {
+        const count = await User.countDocuments({});
+        res.status(200).json({ count });
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
