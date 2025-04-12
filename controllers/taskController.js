@@ -193,3 +193,30 @@ exports.countTasksPending = async (req, res) => {
     }
 };
 
+exports.getRecentTasks = async (req, res) => {
+    try {
+        const response = await Task.find({ isEnabled: true })
+        .sort({ createdAt: -1 })
+        .limit(4)
+        .populate('assignedUser', 'firstName lastName');
+
+        const formattedTasks = response.map(task => ({
+            _id: task._id,
+            taskName: task.taskName,
+            startDate: task.startDate,
+            endDate: task.endDate,
+            assignedUser: {
+                _id: task.assignedUser?._id,
+                fullName: task.assignedUser
+                    ? `${task.assignedUser.firstName} ${task.assignedUser.lastName}` 
+                    : 'Unassigned'
+            },
+            isCompleted: task.isCompleted,
+            createdAt: task.createdAt
+        }));
+
+        res.status(200).json(formattedTasks);
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
