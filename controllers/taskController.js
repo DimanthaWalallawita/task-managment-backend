@@ -177,7 +177,7 @@ exports.updateTaskStatus = async (req, res) => {
 
 exports.countTasks = async (req, res) => {
     try {
-        const countTask = await Task.countDocuments({ isCompleted: true });
+        const countTask = await Task.countDocuments({ isCompleted: true, isEnabled: true });
         res.status(200).json({ countTask });
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error" });
@@ -186,7 +186,7 @@ exports.countTasks = async (req, res) => {
 
 exports.countTasksPending = async (req, res) => {
     try {
-        const countTask = await Task.countDocuments({ isCompleted: false });
+        const countTask = await Task.countDocuments({ isCompleted: false, isEnabled: true });
         res.status(200).json({ countTask });
     } catch (error) {
         res.status(500).json({ message: "Internal Server Error" });
